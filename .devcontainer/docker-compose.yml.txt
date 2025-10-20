@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  # Servicio para la base de datos MySQL
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    environment:
+      # Debe coincidir con 'PASSWORD' en settings.py
+      MYSQL_ROOT_PASSWORD: 'Admin2025'
+      # Debe coincidir con 'NAME' en settings.py
+      MYSQL_DATABASE: 'isdm_estado_de_cuenta_db' 
+      MYSQL_USER: 'root'
+    ports:
+      - "3306:3306"
+    volumes:
+      # Esto asegura que los datos persistan
+      - mysqldata:/var/lib/mysql
+
+  # Servicio para el entorno de desarrollo de Django
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Asegura que la app se inicie DESPUÉS de la base de datos
+    depends_on:
+      - db
+    # Define la conexión a la base de datos dentro del contenedor
+    environment:
+      # Estos valores son CRÍTICOS para la conexión de Django:
+      # El HOST debe ser el nombre del servicio de DB (db)
+      DB_HOST: db 
+      DB_PORT: 3306
+      DB_NAME: isdm_estado_de_cuenta_db
+      DB_USER: root
+      DB_PASSWORD: Admin2025
+    ports:
+      - "8000:8000"
+    volumes:
+      - ..:/workspaces:cached
+    command: /bin/bash -c "pip install -r requirements.txt && python manage.py migrate --noinput && python manage.py runserver 0.0.0.0:8000"
+
+volumes:
+  mysqldata:

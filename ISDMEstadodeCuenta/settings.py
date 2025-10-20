@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os # <-- ¡Añadido para leer variables de entorno!
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -75,12 +76,14 @@ WSGI_APPLICATION = 'ISDMEstadodeCuenta.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Motor MySQL 
-        'NAME': 'isdm_estado_de_cuenta_db', # Nombre de la DB creada 
-        'USER': 'root', # Usuario de MySQL 
-        'PASSWORD': 'Admin2025', # Tu contrasena de MySQL 
-        'HOST': 'localhost', # Direccion del servidor
-        'PORT': '3306', # Puerto de MySQL
+        'ENGINE': 'django.db.backends.mysql',
+        # Lee variables de entorno. Usa 'isdm_estado_de_cuenta_db' para el modo local.
+        'NAME': os.environ.get('DB_NAME', 'isdm_estado_de_cuenta_db'), 
+        'USER': os.environ.get('DB_USER', 'root'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'Admin2025'),
+        # CRÍTICO: En Codespaces será 'db'. Localmente seguirá usando 'localhost'.
+        'HOST': os.environ.get('DB_HOST', 'localhost'), 
+        'PORT': os.environ.get('DB_PORT', '3306'),
     }
 }
 
