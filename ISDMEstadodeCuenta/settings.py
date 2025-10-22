@@ -77,13 +77,15 @@ WSGI_APPLICATION = 'ISDMEstadodeCuenta.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        # Lee variables de entorno. Usa 'isdm_estado_de_cuenta_db' para el modo local.
-        'NAME': os.environ.get('DB_NAME', 'isdm_estado_de_cuenta_db'), 
-        'USER': os.environ.get('DB_USER', 'root'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'Admin2025'),
-        # CRÍTICO: En Codespaces será 'db'. Localmente seguirá usando 'localhost'.
-        'HOST': os.environ.get('DB_HOST', 'localhost'), 
-        'PORT': os.environ.get('DB_PORT', '3306'),
+        'NAME': 'isdm_estado_de_cuenta_db',  # Nombre de tu base de datos
+        'USER': 'root',          # Usuario que usas en Workbench (ej: root)
+        'PASSWORD': 'Admin2025',    # Contraseña de tu usuario
+        'HOST': '127.0.0.1',                 # Generalmente tu propia máquina
+        'PORT': '3306',                      # Puerto por defecto de MySQL
+        # Opcional: configurar opciones para evitar errores
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        }
     }
 }
 
