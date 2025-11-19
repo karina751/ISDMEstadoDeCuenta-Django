@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ titulo }}</title>
+    <link rel="stylesheet" href="{% static 'mi_app/css/styles.css' %}">
+</head>
+<body>
+    <h1>{{ titulo }}</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre Completo</th>
+                <th>DNI</th>
+                <th>Email</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for alumno in alumnos %}
+            <tr>
+                <td>{{ alumno.id_alumno }}</td>
+                <td>{{ alumno.nombre }} {{ alumno.apellido }}</td>
+                <td>{{ alumno.dni }}</td>
+                <td>{{ alumno.email }}</td>
+                <td><a href="{% url 'estado_cuenta' alumno.id_alumno %}">Ver Estado</a></td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="5">No hay alumnos registrados.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

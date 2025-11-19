@@ -1,0 +1,48 @@
+/* src/components/UserInfo.css */
+
+.contenedor-info-usuario {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.alternador-avatar-usuario {
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--color-fondo);
+    border: 3px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-principal);
+    font-size: 2rem;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.alternador-avatar-usuario:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.menu-desplegable-usuario {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem 0;
+    min-width: 200px;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.cabecera-info-usuario {
+    padding: 0.75rem 1rem;
+    background-color: var(--color-fondo);
+    border-bottom: 1px solid var(--color-borde);
+    margin-bottom: 0.5rem;
+}
+
+.cabecera-info-usuario p {
+    font-weight: bold;
+}

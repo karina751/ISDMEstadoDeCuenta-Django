@@ -1,0 +1,42 @@
+# ===============================================
+# 1. IGNORAR ARCHIVOS GLOBALES Y SECRETOS
+# ===============================================
+
+# Archivos de configuración de credenciales (backend/.env)
+.env
+
+# Archivos de base de datos locales
+db.sqlite3
+
+# Logs y archivos de depuración
+*.log
+
+# ===============================================
+# 2. BACK-END (DJANGO / PYTHON)
+# ===============================================
+
+# Entorno virtual de Python
+backend/venv/
+
+# Caché de Python
+__pycache__/
+*.pyc
+
+# Archivos generados por Django (settings/URLs compiladas)
+/backend/ISDMEstadodeCuenta/__pycache__/
+
+# ===============================================
+# 3. FRONT-END (REACT / NODE.JS)
+# ===============================================
+
+# Dependencias de Node.js (GRANDES)
+/frontend/node_modules/
+/frontend/*/node_modules/
+
+# Carpeta de compilación/producción de React
+/frontend/consulta-e/build/
+
+# Archivos de depuración y caché de Node
+npm-debug.log*
+yarn-debug.log*
+.DS_Store

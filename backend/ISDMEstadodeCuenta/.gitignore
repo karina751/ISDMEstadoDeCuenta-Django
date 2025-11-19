@@ -1,0 +1,19 @@
+# Archivos del entorno virtual
+venv/
+__pycache__/
+*.pyc
+
+# Archivos de base de datos local (ya no lo usas, pero es bueno ignorarlo)
+db.sqlite3
+
+# Archivos de la configuración de Django
+/ISDMEstadoDeCuenta/settings_local.py
+
+# Archivos específicos de VS Code
+.vscode/
+
+# Archivos generados por migraciones de Django que no son __init__.py
+mi_app/migrations/0001_initial.py
+# Puedes generalizar esto si tienes más apps
+*/migrations/0*.py
+!*/migrations/__init__.py

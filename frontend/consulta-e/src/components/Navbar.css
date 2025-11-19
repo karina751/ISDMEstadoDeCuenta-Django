@@ -1,0 +1,41 @@
+/* src/components/Navbar.css */
+
+.barra-navegacion {
+    background-color: #212529;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1; 
+}
+
+.barra-navegacion .nav {
+    flex-grow: 1;
+    width: 100%;
+    overflow-y: auto;
+    text-align: center;
+}
+
+.barra-navegacion .navbar-brand {
+    color: #f8f9fa;
+    font-weight: bold;
+    display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 0;
+    width: 100%;
+    text-align: center;
+}
+
+.enlace-nav {
+    color: #f8f9fa;
+    font-size: 1.1em;
+    padding: 1rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.enlace-nav:hover,
+.enlace-nav.activo {
+    background-color: var(--color-hover);
+    color: white;
+}
