@@ -4,7 +4,7 @@ Este proyecto implementa un sistema de consulta de estado de cuenta para alumnos
 
 ---
 
-## 🛠️ Tecnologías Utilizadas
+##  Tecnologías Utilizadas
 
 | Categoría | Tecnología/Librería | Propósito Principal |
 | :--- | :--- | :--- |
@@ -34,11 +34,14 @@ Para levantar el proyecto, debes inicializar el Back-end (servidor de datos) y e
 2.  **Configurar Credenciales:** Crea el archivo **`.env`** en la carpeta `backend/` con las credenciales de tu usuario `root` (o el usuario que uses).
     ```ini
     # backend/.env
+    # CLAVE DE MYSQL: Usa la contraseña de tu usuario 'root' o de desarrollo
     DB_PASSWORD=TU_CONTRASEÑA_MYSQL
-    SECRET_KEY=django-insecure-v!y_vn*iu#1zodcfl!+6v690mit!w9%ej%-nmekj^gu0p72k0^
+
+    #CLAVE SECRETA DE DJANGO (IMPORTANTE: Copia el valor de SECRET_KEY del archivo settings.py)
+    SECRET_KEY=CLAVE_DE_DESARROLLO_SEGURA_O_LA_COPIADA_DE_SETTINGS
     DEBUG=True
     ```
-    *(Reemplaza `TU_CONTRASEÑA_MYSQL` con tu clave, por ejemplo, **3667**).*
+    *(Reemplaza `TU_CONTRASEÑA_MYSQL` con tu clave).*
 
 ---
 
@@ -101,7 +104,7 @@ Para levantar el proyecto, debes inicializar el Back-end (servidor de datos) y e
 
 ---
 
-## 🔑 Cuentas de Prueba (Login Simulado)
+##  Cuentas de Prueba (Login Simulado)
 
 Utiliza estos DNIs en la pantalla de "Simulación de Login" para probar los diferentes flujos:
 
