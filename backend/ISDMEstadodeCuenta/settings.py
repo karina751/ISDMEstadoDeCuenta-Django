@@ -83,16 +83,17 @@ WSGI_APPLICATION = 'ISDMEstadodeCuenta.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# Database
+# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'isdm_estado_de_cuenta_db',       
-        'USER': 'root',                     
-        # 3. LEE LA CONTRASEÑA DEL .ENV
-        'PASSWORD': os.getenv('DB_PASSWORD', 'default_password'), 
-        'HOST': '127.0.0.1',                
-        'PORT': '3306',                     
-        # Opcional: configurar opciones para evitar errores
+        'NAME': 'isdm_estado_de_cuenta_db',
+        'USER': 'root',
+        'PASSWORD': '1234',  # <--- AQUÍ PUSIMOS TU CLAVE FIJA
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         }
