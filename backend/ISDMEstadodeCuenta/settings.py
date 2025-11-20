@@ -91,7 +91,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'isdm_estado_de_cuenta_db',
         'USER': 'root',
-        'PASSWORD': '1234',  # <--- AQUÍ PUSIMOS TU CLAVE FIJA
+        'PASSWORD':os.getenv('DB_PASSWORD', 'default_password'),
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
