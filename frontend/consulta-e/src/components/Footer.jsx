@@ -35,8 +35,9 @@ const Footer = () => {
   
   // Estilo específico para la imagen del logo
   const logoStyle = {
-    height: '40px', // Reducido ligeramente para mejor estética
+    height: '60px', // Reducido ligeramente para mejor estética
     width: 'auto',
+    borderRadius: '30px',
   };
   
   // Estilos para los iconos/enlaces de redes
@@ -67,7 +68,7 @@ const Footer = () => {
       <div>
         {/* Icono de Facebook */}
         <a 
-          href="https://www.facebook.com/InstitutoSuperiorMilagrotica" 
+          href="https://www.facebook.com/InstitutoSuperiorMilagro" 
           target="_blank" 
           rel="noopener noreferrer" 
           style={iconLinkStyle}

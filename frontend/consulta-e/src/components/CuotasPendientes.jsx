@@ -4,7 +4,7 @@ import { FaMoneyBillWave } from 'react-icons/fa';
 
 /**
  * Componente que muestra las cuotas en estado 'Vencida' o 'Pendiente'.
- * - Añade funcionalidad de selección múltiple y pago consolidado.
+ * - Permite la selección múltiple y el pago individual para AMBOS estados.
  */
 const CuotasPendientes = ({ cuotasImpagas, manejarPago }) => {
     // Estado para almacenar los IDs de las cuotas seleccionadas
@@ -15,17 +15,14 @@ const CuotasPendientes = ({ cuotasImpagas, manejarPago }) => {
         return cuotasImpagas
             .filter(cuota => cuotasSeleccionadas.includes(cuota.id_plan))
             .reduce((total, cuota) => {
-                // Usamos el importe total (Base + Recargo)
                 const totalAPagar = parseFloat(cuota.importe_total_con_recargo);
                 return total + totalAPagar;
             }, 0);
     };
 
     // Manejar la selección/deselección de un checkbox
-    const manejarSeleccion = (id_plan, estado) => {
-        // Solo permitir seleccionar cuotas VENCIDAS, no PENDIENTES
-        if (estado === 'Pendiente') return; 
-        
+    const manejarSeleccion = (id_plan) => {
+        // Se permite seleccionar cualquier cuota impaga (Pendiente o Vencida)
         setCuotasSeleccionadas(prevSeleccionadas => {
             if (prevSeleccionadas.includes(id_plan)) {
                 // Deseleccionar
@@ -47,8 +44,6 @@ const CuotasPendientes = ({ cuotasImpagas, manejarPago }) => {
     const totalSeleccionado = calcularTotalSeleccionado();
     const haySeleccionadas = cuotasSeleccionadas.length > 0;
     
-    // **VARIABLE ELIMINADA: Eliminamos 'cuotasPagables'**
-
     return (
         <Card className="shadow-sm">
             <Card.Body>
@@ -103,8 +98,7 @@ const CuotasPendientes = ({ cuotasImpagas, manejarPago }) => {
                                             <Form.Check 
                                                 type="checkbox"
                                                 checked={cuotasSeleccionadas.includes(cuota.id_plan)}
-                                                disabled={!esVencida} // Solo se marcan las VENCIDAS
-                                                onChange={() => manejarSeleccion(cuota.id_plan, cuota.estado)}
+                                                onChange={() => manejarSeleccion(cuota.id_plan)}
                                             />
                                         </td>
                                         
@@ -136,7 +130,8 @@ const CuotasPendientes = ({ cuotasImpagas, manejarPago }) => {
                                                 variant="primary" 
                                                 size="sm" 
                                                 onClick={() => manejarPago(totalAPagar)}
-                                                disabled={!esVencida} // Solo se paga individualmente si está VENCIDA
+                                                // ⭐ MODIFICACIÓN CLAVE: Se eliminó la restricción 'disabled={!esVencida}'
+                                                // El botón ahora está siempre habilitado si la cuota está impaga.
                                             >
                                                 <FaMoneyBillWave /> Pagar
                                             </Button>

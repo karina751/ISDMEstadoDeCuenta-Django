@@ -46,7 +46,7 @@ const VistaAdministrativa = ({ alumnos, manejarPago, usuario }) => {
                     />
                     {/* Botón para volver a la búsqueda */}
                     <Button 
-                        variant="link" 
+                        variant="btn btn-primary btn-lg" 
                         onClick={() => setAlumnoEncontrado(null)} 
                         className="mt-3"
                     >

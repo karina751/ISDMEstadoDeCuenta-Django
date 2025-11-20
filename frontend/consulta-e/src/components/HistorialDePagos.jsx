@@ -8,10 +8,7 @@ import './HistorialDePagos.css';
 
 /**
  * Componente que muestra el historial de cuotas pagadas y genera el PDF
- * completo del estado de cuenta (Pagos + Pendientes/Vencidas + Resumen).
- * * NOTA: La función generarPDF ha sido modificada para:
- * 1. Usar los datos dinámicos de las cuotas (Importe Base, Recargo, Total a Pagar).
- * 2. Eliminar el recuadro separado de "Cuotas Vencidas" que causaba fallas.
+ * completo del estado de cuenta.
  */
 const HistorialDePagos = ({ 
     cuotasPagadas, 
@@ -25,6 +22,8 @@ const HistorialDePagos = ({
     const [filtroAnio, setFiltroAnio] = useState('Todos');
     const [ordenarPor, setOrdenarPor] = useState(null);
     const [ordenDireccion, setOrdenDireccion] = useState('asc');
+
+    // ... (Manejo de filtros y ordenación sin cambios) ...
 
     const manejarFiltroTextoChange = (e) => {
         setFiltroTexto(e.target.value);
@@ -120,6 +119,14 @@ const HistorialDePagos = ({
     };
 
     // ------------------------------------------------------------------
+    // NUEVA FUNCIÓN: Maneja el clic en el botón "Ver" (Muestra Alerta)
+    // ------------------------------------------------------------------
+    const manejarVistaComprobante = () => {
+        alert("Redireccionando al comprobante de pago (funcionalidad en desarrollo).");
+    };
+
+
+    // ------------------------------------------------------------------
     // FUNCIÓN DE GENERACIÓN DE PDF (FINAL Y COMPLETA)
     // ------------------------------------------------------------------
     const generarPDF = () => {
@@ -139,7 +146,7 @@ const HistorialDePagos = ({
 
         // --- 1. CABECERA Y DATOS DE EMISIÓN ---
         doc.setFontSize(16);
-        doc.setTextColor(93, 2, 28); // Color Rojo principal
+        doc.setTextColor(93, 2, 28); 
         doc.text('Instituto Superior del Milagro', 105, yPosicion, null, null, "center");
         yPosicion += 7;
         
@@ -171,7 +178,7 @@ const HistorialDePagos = ({
         
         doc.setTextColor(93, 2, 28); 
         doc.setFontSize(10);
-        doc.text('DEUDA TOTAL:', 16, yPosicion + 7); // Centrado en la caja
+        doc.text('DEUDA TOTAL:', 16, yPosicion + 7); 
         doc.setFontSize(12);
         doc.text(`$${deudaTotal.toLocaleString('es-AR', { minimumFractionDigits: 2 })}`, 45, yPosicion + 7);
 
@@ -313,8 +320,7 @@ const HistorialDePagos = ({
                                     <td>
                                         <Button 
                                             variant="link" 
-                                            href={cuota.pagos.length > 0 && cuota.pagos[0].comprobantes.length > 0 ? cuota.pagos[0].comprobantes[0].nro_comprobante : '#'} 
-                                            target="_blank"
+                                            onClick={manejarVistaComprobante} // <--- CAMBIO: Ahora solo lanza la alerta
                                             disabled={cuota.pagos.length === 0}
                                         >
                                             Ver
