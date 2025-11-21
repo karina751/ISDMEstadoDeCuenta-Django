@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import LogoISDM from '../assets/logohead.png'; // <--- CAMBIO REALIZADO AQUÍ
+import LogoISDM from '../assets/logohead.png';
 import './Navbar.css';
 
 /**
@@ -9,11 +9,10 @@ import './Navbar.css';
  */
 const AppNavbar = ({ reporteActivo, setReporteActivo }) => {
     
-    // Estilo específico para la imagen del logo en el Navbar
-    // Ajusto el height a 40px, asumiendo que el logo más largo (logohead) se escalará bien horizontalmente.
+    
     const logoNavbarStyle = {
         height: '70px', 
-        width: '100%', // Permite que el ancho se ajuste proporcionalmente
+        width: '100%', 
         marginBottom: '10px', 
         borderRadius: '5px',
         
@@ -25,10 +24,8 @@ const AppNavbar = ({ reporteActivo, setReporteActivo }) => {
     };
 
     return (
-        // Usamos las utilidades de Bootstrap para centrar y estructurar la columna
         <Navbar expand="lg" variant="dark" className="barra-navegacion flex-column align-items-center p-3">
             
-            {/* INSERTAMOS LA IMAGEN DEL LOGOHEAD */}
             <img 
                 src={LogoISDM} 
                 alt="Logo ISDM" 
@@ -41,7 +38,6 @@ const AppNavbar = ({ reporteActivo, setReporteActivo }) => {
             </Navbar.Brand>
             
             <Nav className="flex-column texto-centrado ancho-completo">
-                {/* ÚNICO ENLACE: Estado de Cuenta (funciona como Inicio/Recargar) */}
                 <Nav.Link
                     className={`enlace-nav ${reporteActivo === 'Estado de Cuenta' ? 'activo' : ''}`}
                     onClick={() => handleClick('Estado de Cuenta')}

@@ -130,8 +130,7 @@ const CuotasPendientes = ({ cuotasImpagas, manejarPago }) => {
                                                 variant="primary" 
                                                 size="sm" 
                                                 onClick={() => manejarPago(totalAPagar)}
-                                                // ⭐ MODIFICACIÓN CLAVE: Se eliminó la restricción 'disabled={!esVencida}'
-                                                // El botón ahora está siempre habilitado si la cuota está impaga.
+                                                
                                             >
                                                 <FaMoneyBillWave /> Pagar
                                             </Button>

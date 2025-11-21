@@ -19,7 +19,7 @@ const UserInfo = ({ datosAlumno }) => {
     };
 
     const handleSignOut = () => {
-        // SOLUCIÓN FINAL: Forzar la recarga de la ventana para reiniciar el estado de React
+        // Forzar la recarga de la ventana para reiniciar el estado de React
         if (window.confirm("¿Estás seguro de que quieres cerrar la sesión?")) {
             window.location.reload(); 
         }

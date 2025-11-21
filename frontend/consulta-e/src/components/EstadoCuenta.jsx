@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import CuotasPendientes from './CuotasPendientes';
 import HistorialDePagos from './HistorialDePagos';
-// import UserInfo from './UserInfo'; <-- ELIMINADO para evitar duplicidad
 import './EstadoCuenta.css';
 
 const EstadoCuenta = ({ usuario, alumnos, manejarPago }) => {

@@ -142,7 +142,7 @@ const HistorialDePagos = ({
         const doc = new jsPDF();
         const nombreCompleto = `${usuario.nombre} ${usuario.apellido}`;
         
-        let yPosicion = 15; // Posición inicial Y
+        let yPosicion = 15; 
 
         // --- 1. CABECERA Y DATOS DE EMISIÓN ---
         doc.setFontSize(16);
@@ -190,7 +190,7 @@ const HistorialDePagos = ({
         
         yPosicion += 20;
 
-        // --- 4. TABLA DE CUOTAS PENDIENTES/VENCIDAS (COMPLETA) ---
+        // --- 4. TABLA DE CUOTAS PENDIENTES/VENCIDAS ---
         if (cuotasImpagas.length > 0) {
             doc.setFontSize(10);
             doc.setTextColor(0, 0, 0); 
@@ -243,7 +243,7 @@ const HistorialDePagos = ({
         }
 
 
-        // --- 6. FOOTER (Pie de Página) ---
+        // --- 6. FOOTER  ---
         doc.setFontSize(7);
         doc.setTextColor(150, 150, 150);
         doc.text(`Este documento fue generado automáticamente el ${fechaCompleta}`, 105, yPosicion + 5, null, null, "center");

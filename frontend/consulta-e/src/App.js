@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, Button, Alert, Card } from 'react-bootstrap';
-import './App.css'; // Mantenemos el CSS por si tienes estilos de tipografía o colores
+import './App.css';
 import AppNavbar from './components/Navbar';
 import EstadoCuenta from './components/EstadoCuenta';
 import Footer from './components/Footer';
@@ -100,14 +100,11 @@ function App() {
     };
 
     return (
-        // Usamos Container-fluid para ocupar todo el ancho de la pantalla
-        // d-flex flex-column min-vh-100 asegura que la app ocupe el 100% de la altura de la vista, empujando el footer abajo
         <Container fluid className="p-0 d-flex flex-column min-vh-100">
             
-            <Row className="flex-grow-1 g-0"> {/* g-0 elimina el padding entre columnas */}
+            <Row className="flex-grow-1 g-0">
                 
                 {/* 1. Columna del Navegador/Barra Lateral */}
-                {/* Ocupa 12 columnas en móvil, pero solo 3 en pantallas medianas y 2 en grandes */}
                 {usuario && (
                     <Col xs={12} md={3} lg={2} className="bg-light border-end">
                         <AppNavbar setReporteActivo={setReporteActivo} />
@@ -115,7 +112,6 @@ function App() {
                 )}
                 
                 {/* 2. Columna del Contenido Principal */}
-                {/* Ocupa el espacio restante (12 si no hay barra lateral, 9 o 10 si sí la hay) */}
                 <Col 
                     xs={12} 
                     md={usuario ? 9 : 12} 
@@ -150,7 +146,6 @@ function App() {
 
 // ------------------------------------------------------------------
 // COMPONENTE AUXILIAR: SIMULACIÓN DE LOGIN
-// Mejorado para ser responsive
 // ------------------------------------------------------------------
 const LoginSimulacion = ({ handleLogin }) => {
     const [dni, setDni] = useState('');
@@ -173,10 +168,8 @@ const LoginSimulacion = ({ handleLogin }) => {
     };
 
     return (
-        // Usamos Col para controlar el ancho de la Card de forma responsive
         <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '80vh' }}>
             <Row className="w-100 justify-content-center">
-                {/* La tarjeta ocupa 10 columnas en móvil, 8 en tablet y 6 en escritorio */}
                 <Col xs={10} sm={8} md={6} lg={4}>
                     <Card className="shadow-lg">
                         <Card.Body>

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, Form, Button, Alert } from 'react-bootstrap';
-// Importaciones necesarias para los componentes anidados
 import CuotasPendientes from './CuotasPendientes'; 
 import HistorialDePagos from './HistorialDePagos';
-import './EstadoCuenta.css'; // Importación de estilos
+import './EstadoCuenta.css'; 
 
 // ====================================================================
 // COMPONENTE PRINCIPAL: VISTA ADMINISTRATIVA
@@ -34,7 +33,6 @@ const VistaAdministrativa = ({ alumnos, manejarPago, usuario }) => {
 
     return (
         <Container fluid>
-            {/* UserInfo del administrador logueado se renderiza en App.js */}
             
             {/* LÓGICA DE CONMUTACIÓN DE VISTAS */}
             {alumnoEncontrado ? (

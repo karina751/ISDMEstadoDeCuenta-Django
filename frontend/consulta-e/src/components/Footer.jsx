@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { FaFacebook, FaInstagram } from 'react-icons/fa'; // Importamos los iconos
-import LogoISDM from '../assets/logo_isdm.png'; // Asumimos que la ruta del logo es correcta
+import { FaFacebook, FaInstagram } from 'react-icons/fa'; 
+import LogoISDM from '../assets/logo_isdm.png'; 
 
 /**
  * Componente funcional para el pie de página.
@@ -10,9 +10,8 @@ const Footer = () => {
   // Estado para almacenar el año actual.
   const [currentYear] = useState(new Date().getFullYear());
   
-  // Estilos del contenedor principal del footer (Ajustado a color más oscuro/borgoña)
   const footerStyle = {
-    backgroundColor: '#5D021C', // Borgoña oscuro, similar al logo y al color principal de la app
+    backgroundColor: '#5D021C', 
     color: 'white',
     padding: '15px 0',
     textAlign: 'center',
@@ -35,14 +34,14 @@ const Footer = () => {
   
   // Estilo específico para la imagen del logo
   const logoStyle = {
-    height: '60px', // Reducido ligeramente para mejor estética
+    height: '60px', 
     width: 'auto',
     borderRadius: '30px',
   };
   
   // Estilos para los iconos/enlaces de redes
   const iconLinkStyle = {
-    color: 'white', // Color del icono
+    color: 'white', 
     textDecoration: 'none',
     margin: '0 10px',
     fontSize: '1.25em',
@@ -76,7 +75,6 @@ const Footer = () => {
           <FaFacebook />
         </a>
         
-        {/* Separador (opcional, pero se ve más limpio sin él en iconos) */}
         
         {/* Icono de Instagram */}
         <a 
