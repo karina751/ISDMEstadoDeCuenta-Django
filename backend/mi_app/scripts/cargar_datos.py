@@ -9,7 +9,7 @@ from django.db import connection, transaction
 id_pago_counter = 8000 
 id_comprobante_counter = 9000
 
-# --- 1. Definir Carreras (CORRECCIÓN CRÍTICA: SOLO INSERCIÓN SEGURA) ---
+# --- 1. Definir Carreras  ---
 def obtener_o_crear_carrera(nombre="Ingeniería de Software"):
     """Función que asegura la existencia de la fila Carrera 101 sin manejo de errores complejos."""
     # Intentamos insertar directamente. Si ya existe (por una ejecución previa), fallará el INSERT,

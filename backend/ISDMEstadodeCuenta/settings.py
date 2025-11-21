@@ -1,9 +1,9 @@
 import pymysql
-import os # Aseguramos la importación de os
-from dotenv import load_dotenv # Importación de la librería dotenv
+import os 
+from dotenv import load_dotenv 
 from pathlib import Path
 
-# CARGA CRÍTICA: Carga las variables del archivo .env
+# Carga las variables del archivo .env
 load_dotenv() 
 
 pymysql.install_as_MySQLdb() 

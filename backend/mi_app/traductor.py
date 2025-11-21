@@ -30,7 +30,7 @@ class TraductorPlanCuotas(serializers.ModelSerializer):
     # Utilizamos el Traductor del modelo base Cuota para obtener los datos
     datos_cuota = TraductorCuotaBase(source='fk_id_cuota', read_only=True)
     
-    # Nuevo campo calculado: Suma el importe base y el recargo
+    # Suma el importe base y el recargo
     importe_total_con_recargo = serializers.SerializerMethodField()
     
     # Obtiene los pagos asociados a este plan de cuotas
@@ -43,17 +43,15 @@ class TraductorPlanCuotas(serializers.ModelSerializer):
         
     # Método para calcular el importe total a pagar (incluye recargo solo en VENCIDAS)
     def get_importe_total_con_recargo(self, obj):
-        # Esta lógica refleja la necesidad de sumar importe + recargo_importe
         return obj.fk_id_cuota.importe + obj.fk_id_cuota.recargo_importe
 
 
 # --- Nivel superior: Alumno (TraductorAlumno) ---
 
 class TraductorAlumno(serializers.ModelSerializer):
-    # Obtiene todos los planes de cuotas asociados al alumno
     planes_de_pago = TraductorPlanCuotas(many=True, read_only=True, source='planes_cuotas') 
 
     class Meta:
         model = Alumno
-        # CORRECCIÓN: Añadimos 'rol' para que React lo reciba
+        # Añadimos 'rol' para que React lo reciba
         fields = ['id_alumno', 'nombre', 'apellido', 'dni', 'email', 'rol', 'planes_de_pago']

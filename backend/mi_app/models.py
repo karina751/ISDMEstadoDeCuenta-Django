@@ -71,7 +71,7 @@ class PlanCuotasAlumno(models.Model):
     # Claves Foráneas: Usamos CASCADE
     fk_id_alumno = models.ForeignKey(
         Alumno, 
-        models.CASCADE, # CAMBIO
+        models.CASCADE, 
         db_column='FK_id_alumno', 
         related_name='planes_cuotas'
     )
@@ -90,7 +90,6 @@ class Pago(models.Model):
     fecha_pago = models.DateTimeField()
     importe_pagado = models.DecimalField(max_digits=10, decimal_places=2)
     forma_pago = models.CharField(max_length=50)
-    # Clave Foránea: Usamos CASCADE
     fk_id_plan = models.ForeignKey(PlanCuotasAlumno, models.CASCADE, db_column='FK_id_plan')
 
     class Meta:
@@ -102,9 +101,7 @@ class Comprobante(models.Model):
     id_comprobante = models.IntegerField(primary_key=True)
     nro_comprobante = models.CharField(max_length=50)
     fecha_emision = models.DateTimeField()
-    # Clave Foránea: Usamos CASCADE
     fk_id_pago = models.ForeignKey(Pago, models.CASCADE, db_column='FK_id_pago')
 
     class Meta:
-        # Se elimina managed=False para que Django cree esta tabla
         db_table = 'Comprobante'

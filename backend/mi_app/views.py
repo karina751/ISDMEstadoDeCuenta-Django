@@ -1,10 +1,7 @@
 from django.shortcuts import render
-from .models import Alumno, Carrera # Importamos los modelos que creaste
-# -----------------------------------------------
-# **NUEVAS IMPORTACIONES PARA LA API**
+from .models import Alumno, Carrera 
 from rest_framework import viewsets
-from .traductor import TraductorAlumno # Importamos nuestro traductor en español
-# -----------------------------------------------
+from .traductor import TraductorAlumno 
 
 def lista_alumnos(request):
     """
@@ -33,7 +30,6 @@ def estado_cuenta_detalle(request, alumno_id):
         alumno = Alumno.objects.get(id_alumno=alumno_id)
         
         # Simula la lógica compleja para obtener todos los datos de pago
-        # (Esto requeriría un JOIN complejo, por ahora lo simplificamos)
         cuotas_plan = alumno.plancuotasalumno_set.all() 
         
         contexto = {
@@ -59,5 +55,5 @@ class VistaAlumnoAPI(viewsets.ReadOnlyModelViewSet):
     # Objeto de consulta para la base de datos
     queryset = Alumno.objects.all()
     
-    # Traductor (Serializer) que se encarga de dar formato JSON
+    # Traductor que se encarga de dar formato JSON
     serializer_class = TraductorAlumno
