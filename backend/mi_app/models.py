@@ -94,8 +94,8 @@ class Pago(models.Model):
 class Comprobante(models.Model):
     id_comprobante = models.IntegerField(primary_key=True)
     nro_comprobante = models.CharField(max_length=50)
-    fecha_emision = models.DateTimeField()
-    fk_id_pago = models.ForeignKey(Pago, models.CASCADE, db_column='FK_id_pago')
+    fecha_emision = models.DateTimeField() # Fecha y hora exacta de la emisión (requiere input manual)
+    fk_id_pago = models.ForeignKey(Pago, models.CASCADE, db_column='FK_id_pago') # Relación con Pago. Si se elimina el Pago, se elimina el Comprobante (CASCADE)
 
     class Meta:
         db_table = 'Comprobante'
