@@ -49,7 +49,7 @@ def cargar_datos_iniciales():
         
     
     # 2. INSERCIÓN CRÍTICA: Insertar la fila Padre (Carrera 101)
-    carrera_default = obtener_o_crear_carrera() # Esto ya no fallará si la tabla existe
+    carrera_default = obtener_o_crear_carrera() 
 
     # B. Datos de los alumnos (NUEVAS REGLAS DE NEGOCIO Y ROL)
     datos_alumnos = [

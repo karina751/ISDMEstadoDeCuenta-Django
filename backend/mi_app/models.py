@@ -8,11 +8,10 @@ class Alumno(models.Model):
     direccion = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
 
-    # NUEVO CAMPO: Para distinguir entre 'Alumno' y 'Administrativo'
+    # Para distinguir entre 'Alumno' y 'Administrativo'
     rol = models.CharField(max_length=20, default='Alumno') 
 
     class Meta:
-        # Se elimina managed=False para que Django cree esta tabla
         db_table = 'Alumno'
     
     def __str__(self):
@@ -24,7 +23,6 @@ class Carrera(models.Model):
     nombre = models.CharField(max_length=100)
 
     class Meta:
-        # Se elimina managed=False para que Django cree esta tabla
         db_table = 'Carrera'
 
     def __str__(self):
@@ -39,15 +37,14 @@ class Cuota(models.Model):
     periodo = models.CharField(max_length=20)
     importe = models.DecimalField(max_digits=10, decimal_places=2)
     vencimiento = models.DateField()
-    # CAMBIO CRÍTICO: Usamos on_delete=models.CASCADE para la creación.
+    # Usamos on_delete=models.CASCADE para la creación.
     # Si usamos DO_NOTHING con managed=False, Django no crea la tabla.
     fk_id_carrera = models.ForeignKey(Carrera, models.CASCADE, db_column='FK_id_carrera')
 
-    # NUEVO CAMPO: Recargo fijo aplicado a la cuota
+    # Recargo fijo aplicado a la cuota
     recargo_importe = models.DecimalField(max_digits=10, decimal_places=2, default=0.00) 
 
     class Meta:
-        # Se elimina managed=False para que Django cree esta tabla
         db_table = 'Cuota' 
         
     def __str__(self):
@@ -61,7 +58,6 @@ class PlanEstudio(models.Model):
     fk_id_carrera = models.ForeignKey(Carrera, models.CASCADE, db_column='FK_id_carrera')
 
     class Meta:
-        # Se elimina managed=False para que Django cree esta tabla
         db_table = 'Plan_Estudio'
 
 
@@ -78,7 +74,6 @@ class PlanCuotasAlumno(models.Model):
     fk_id_cuota = models.ForeignKey(Cuota, models.CASCADE, db_column='FK_id_cuota') # CAMBIO
 
     class Meta:
-        # Se elimina managed=False para que Django cree esta tabla
         db_table = 'Plan_Cuotas_Alumno'
 
 # ----------------------------------------------------------------------
@@ -93,7 +88,6 @@ class Pago(models.Model):
     fk_id_plan = models.ForeignKey(PlanCuotasAlumno, models.CASCADE, db_column='FK_id_plan')
 
     class Meta:
-        # Se elimina managed=False para que Django cree esta tabla
         db_table = 'Pago'
 
 
