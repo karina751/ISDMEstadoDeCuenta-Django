@@ -1,11 +1,25 @@
-# Usa una imagen base de Python con Debian
+#  Mantenemos la imagen base que elegiste
 FROM python:3.11-slim-bullseye
 
-# Establece el directorio de trabajo
-WORKDIR /workspaces/ISDMEstadodeCuenta
-
-# Asegura la instalación de dependencias necesarias para mysqlclient
+#  Instalamos dependencias de sistema para mysqlclient
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     default-libmysqlclient-dev \
+    pkg-config \
     && rm -rf /var/lib/apt/lists/*
+
+# Usamos una ruta estándar interna
+WORKDIR /app
+
+# COPIAMOS E INSTALAMOS DEPENDENCIAS PRIMERO (Para aprovechar caché)
+COPY requirements.txt .
+RUN pip install --upgrade pip && pip install -r requirements.txt
+
+# Copiamos el resto del código
+COPY . .
+
+# Exponemos el puerto
+EXPOSE 8000
+
+# El comando final se maneja en el docker-compose, pero podemos dejar uno por defecto
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
