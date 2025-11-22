@@ -152,7 +152,7 @@ def cargar_datos_iniciales():
                 id_comprobante_counter += 1
                 
                 fecha_pago_dt = datetime.strptime(datos_cuota['fechaPago'], '%Y-%m-%d')
-
+# 1. Crea un registro de 'Pago' en la base de datos
                 pago = Pago.objects.create(
                     id_pago=id_pago_counter,
                     fecha_pago=fecha_pago_dt, 
@@ -160,15 +160,15 @@ def cargar_datos_iniciales():
                     forma_pago=datos_cuota['medioPago'],
                     fk_id_plan=plan_cuota
                 )
-                
+                # 2. Crea un registro de 'Comprobante' vinculado al pago anterior
                 Comprobante.objects.create(
                     id_comprobante=id_comprobante_counter,
                     nro_comprobante=f"RC-{id_comprobante_counter}",
                     fecha_emision=fecha_pago_dt,
                     fk_id_pago=pago
                 )
-
+# 3. Bloque ELSE: Se ejecuta si la condición anterior (probablemente un 'if') no se cumplió
                 print(f"   -> Cuota {datos_cuota['periodo']} PAGADA.")
             else:
-                importe_final = float(datos_cuota['importe']) + float(recargo)
-                print(f"   -> Cuota {datos_cuota['periodo']} ({datos_cuota['estado']}) cargada. Importe con recargo: ${importe_final:.2f}")
+                importe_final = float(datos_cuota['importe']) + float(recargo) # Calcula el importe sumando un recargo (convierte a float para poder sumar decimales)
+                print(f"   -> Cuota {datos_cuota['periodo']} ({datos_cuota['estado']}) cargada. Importe con recargo: ${importe_final:.2f}") # Imprime un mensaje informativo con el nuevo total formateado
