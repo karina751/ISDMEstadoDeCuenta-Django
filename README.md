@@ -111,3 +111,22 @@ Utiliza estos DNIs en la pantalla de "Simulación de Login" para probar los dife
 * **Secretaria Administrativa:** `00000001` (Accede al rol Administrativo).
 * **Alumno (Con Deuda y Recargos):** `34567890` (Juan Perez).
 * **Alumno (Al Día):** `12345678` (Maria Lopez).
+
+---
+
+## 🐳 Ejecución con Docker (En proceso)
+
+Si prefieres no instalar dependencias manualmente, puedes levantar todo el entorno con un solo comando.
+
+1.  Asegúrate de tener **Docker Desktop** instalado y corriendo.
+2.  Crea un archivo `.env` en la carpeta `backend/` (basado en `.env.example`).
+3.  Ejecuta en la raíz del proyecto:
+    ```bash
+    docker-compose up --build
+    ```
+4.  Accede a:
+    * **Front-end:** http://localhost:3000
+    * **Back-end (API):** http://localhost:8000
+    * **Admin Django:** http://localhost:8000/admin
+
+---
